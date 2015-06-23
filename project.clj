@@ -1,4 +1,4 @@
-(defproject clj-disco "0.0.1-SNAPSHOT"
+(defproject clj-disco "0.0.1"
   :description "A client library for registrator-backed service discovery"
   :url "https://github.com/opsee/clj-disco"
   :license "MIT"
