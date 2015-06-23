@@ -21,12 +21,12 @@
 
 (defmacro with-etcd [& body]
   `(do
-     (when-not (deref client)
+     (if-not (deref client)
        (try
          (reset! client (etcd/connect etcd-url))
+         ~@body
          (catch Exception e#
-           (log/error "Error communicating with etcd:" e# (.printStackTrace e#)))))
-     (when (deref client)
+           (log/error "Error communicating with etcd:" e# (.printStackTrace e#))))
        ~@body)))
 
 (defn- etcd-get [path]
