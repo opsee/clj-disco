@@ -5,7 +5,7 @@
   returned from service discovery. The services are represented by a
   PersistentHashMap, e.g.:
 
-  (disco/get-service-endpoint \"bartnet-redis\")
+  (disco/get-service-endpoint \"service-name\")
   => {:host \"127.0.0.1\" :port \"2379\"}"
   (:require [verschlimmbesserung.core :as etcd]
             [clojure.tools.logging :as log]))
@@ -39,9 +39,9 @@
   "Retrieve connection details for a service."
   [service-name]
   (with-etcd
-    (let [bartnet-redis (seq (etcd-get (service-path service-name)))]
-      (when bartnet-redis
-        (let [endpoint (clojure.string/split (last (rand-nth bartnet-redis)) #":")
+    (let [endpoints (seq (etcd-get (service-path service-name)))]
+      (when endpoints
+        (let [endpoint (clojure.string/split (last (rand-nth endpoints)) #":")
               host (first endpoint)
               port (last endpoint)]
           {:host host :port port})))))

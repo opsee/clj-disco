@@ -19,9 +19,9 @@ nil
 
 clj-disco gets its configuration information from the environment:
 
-`ETCD\_HOST` (default: 127.0.0.1) is the hostname or IP address of an etcd client listener.
+`ETCD_HOST` (default: 127.0.0.1) is the hostname or IP address of an etcd client listener.
 
-`ETCD\_PORT` (default: 2379) is the port etcd is listening on for client connections.
+`ETCD_PORT` (default: 2379) is the port etcd is listening on for client connections.
 
 ```clj
 user=> (disco/get-service-endpoint "test-service")
