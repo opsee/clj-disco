@@ -7,6 +7,8 @@
                  [verschlimmbesserung "0.1.2"]
                  [org.clojure/tools.logging "0.3.1"]]
   :profiles {:dev {:dependencies [[midje "1.6.3"]]}}
-  :deploy-repositories {"clojars-https" {:url      "https://clojars.org/repo"
-                                         :username :env/clojars_user
-                                         :password :env/clojars_pass}})
+  :plugins [[s3-wagon-private "1.1.2"]]
+  :repositories [["snapshots" {:url "s3p://opsee-maven-snapshots/snapshot"
+                               :username :env
+                               :passphrase :env
+                               :sign-releases false}]])
